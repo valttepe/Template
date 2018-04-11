@@ -1,0 +1,18 @@
+nav.navbar.navbar-expand-md.bg-dark.navbar-dark
+        // Brand
+        a.navbar-brand(href="/") App
+        // Toggler/collapsibe Button
+        button.navbar-toggler(type="button" data-toggle="collapse" data-target="#collapsibleNavbar")
+            span.navbar-toggler-icon
+        // Navbar links
+        #collapsibleNavbar.collapse.navbar-collapse
+            ul.navbar-nav
+            li.nav-item
+                a.nav-link(href="profile.html") Profile
+            li.nav-item
+                a.nav-link(href="") Posts
+            li.nav-item
+                a.nav-link(href="#") Categories
+            form.form-inline(action="/action_page.php")
+            input.form-control.mr-sm-2(type="text" placeholder="Search")
+            button.btn.btn-success(type="submit") Search
