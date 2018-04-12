@@ -4,11 +4,12 @@
 class Database {
     constructor() {
         this.mongoose = require('mongoose');
+        this.https = require('https');
     }
-    connect(url, app) {
+    connect(url, app, options) {
         this.mongoose.connect(url).then(() => {
           console.log('Connected successfully.');
-          app.listen(3000);
+          this.https.createServer(options, app).listen(3000);
         }, (err) => {
           console.log('Connection to db failed: ' + err);
         });

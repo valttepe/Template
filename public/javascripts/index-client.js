@@ -55,7 +55,7 @@ const pictures = (picArray) => {
         const cardbody = document.createElement('div');
         const img = document.createElement('img');
         const title = document.createElement('h4');
-        const detail = document.createElement('p');
+        // const detail = document.createElement('p');
         const category = document.createElement('p');
         const button = document.createElement('a');
         // add data to elements
@@ -79,8 +79,6 @@ const pictures = (picArray) => {
 
         // id for the element. Needed in sorting
         column.setAttribute('id', item.category);
-        
-
         // add data to container element
         column.appendChild(img);
         cardbody.appendChild(title);

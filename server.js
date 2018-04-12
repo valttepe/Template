@@ -2,6 +2,7 @@
 
 const createError = require('http-errors');
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -18,6 +19,14 @@ const usersRouter = require('./routes/users');
 const chatRouter = require('./routes/chat');
 
 const app = express();
+
+const sslkey = fs.readFileSync('ssl-key.pem');
+const sslcert = fs.readFileSync('ssl-cert.pem')
+
+const options = {
+    key: sslkey,
+    cert: sslcert,
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,7 +45,7 @@ app.use(helmet({
 // 'mongodb://catAdmin:Adminpass@localhost:27017/data'
 const url = 'mongodb://' + process.env.DB_USER + ':' + process.env.DB_PASS + '@' + process.env.DB_HOST + ':' + process.env.DB_PORT + '/data';
 // Connecting to db
-DB.connect(url, app);
+DB.connect(url, app, options);
 
 // Somehow useful
 app.use('/modules', express.static('node_modules'));
