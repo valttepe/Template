@@ -1,0 +1,22 @@
+extends layout/main
+
+block content
+    
+    div.container
+      h2 Form control: input
+      p
+        | The form below contains two input elements; one of type text and one of type password:
+      div.form-group
+            label(for="textarea") Chat:
+            textarea#textarea.form-control.chatarea(type="text", rows=10)
+      form#chatform
+        div.form-group
+            label(for="usr") Username:
+            input#usr.form-control.username(type="text")
+        div.form-group
+            label(for="message") Message:
+            input#message.form-control.message(type="text")
+        div.form-group
+            button.btn.btn-primary(type="submit") Send
+    script(src='/javascripts/chat-client.js')
+            

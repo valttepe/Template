@@ -1,30 +1,60 @@
 extends layout/main
 
 block content
-  h1= title
-  p Welcome to #{title}
-  div.row#row-content
-    div.card.col-sm-4#card-padding
-        img.card-img-top(src="img_avatar1.png" alt="Card image")
-        div.card-body
-          h4.card-title John Doe
-          p.card-text Some example text.
-          a.btn.btn-primary(href="#") See Profile
-    div.card.col-sm-4#card-padding
-        img.card-img-top(src="img_avatar1.png" alt="Card image")
-        div.card-body
-          h4.card-title John Doe
-          p.card-text Some example text.
-          a.btn.btn-primary(href="#") See Profile
-    div.card.col-sm-4#card-padding
-        img.card-img-top(src="img_avatar1.png" alt="Card image")
-        div.card-body
-          h4.card-title John Doe
-          p.card-text Some example text.
-          a.btn.btn-primary(href="#") See Profile
-    div.card.col-sm-4#card-padding
-        img.card-img-top(src="img_avatar1.png" alt="Card image")
-        div.card-body
-          h4.card-title John Doe
-          p.card-text Some example text.
-          a.btn.btn-primary(href="#") See Profile
+
+  .container
+    // Nav tabs
+    ul.nav.nav-tabs(role="tablist")
+      li.nav-item
+        a.nav-link.active(data-toggle="tab" href="#home") Home
+      li.nav-item
+        a#new-meow-tab.nav-link(data-toggle="tab" href="#add-new") Add new
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(data-toggle="dropdown" href="#") Filter
+        .dropdown-menu
+          a#all.dropdown-item(href="#") All
+
+  .container
+    // Tab panes
+    .tab-content
+      #home.container.tab-pane.active
+        br
+        h3 Main
+        // One row for the pictures
+        #row-content.row
+      #add-new.container.tab-pane.fade
+        br
+        .container
+          h2 Upload
+          form#add-cat.form-horizontal
+            .form-group
+              label.control-label.col-sm-2(for="title") Title:
+              .col-sm-10
+                input#title.form-control(type="text" placeholder="Enter title" name="title")
+            .form-group
+              label.control-label.col-sm-2(for="category") Category:
+              .col-sm-10
+                input#category.form-control(type="text" placeholder="Enter category" name="category")
+            .form-group
+              label(for="gender") Select list:
+              select#gender.form-control(name="gender")
+                option Male
+                option Female
+            .form-group
+              label.control-label.col-sm-2(for="file") Image:
+              input#file.form-control(type="file" name="file" accept="image/*")
+            .form-group
+              .col-sm-offset-2.col-sm-10
+                button.btn.btn-default(type="submit") Submit
+  // The Modal
+  #myModal.modal
+    // Modal content
+    .modal-content
+      .modal-header
+        h4#titleholder.modal-title
+        span.close ×
+      .modal-body
+        img#imageholder.img-fluid(src="#" alt="kitten")
+        p#detailholder
+        button#edit-btn Edit
+  script(src='javascripts/index-client.js')
